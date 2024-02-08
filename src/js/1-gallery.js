@@ -83,7 +83,21 @@ gallery.insertAdjacentHTML("afterbegin", galleryHTML);
 
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-const lightbox = new SimpleLightbox('.gallery a', { captionsData:  "alt", captionDelay: 250 });
+const lightbox = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
 
+lightbox.on('shown.simplelightbox', function () {
+  const overlay = document.querySelector(".sl-overlay");
+  const btnClose = document.querySelector(".sl-close ");
+  const counter = document.querySelector(".sl-counter");
+  const btnArrow = document.querySelectorAll(".sl-navigation button");
+  const overlayImage = document.querySelector(".sl-caption");
+
+  overlay.style.backgroundColor = "rgb(46, 47, 66)";
+  btnClose.style.color = "#ffffff";
+  btnClose.style.fontSize = "2rem";
+  counter.style.color = "#ffffff";
+  btnArrow.forEach(item => item.style.color = "#ffffff");
+  overlayImage.style.backgroundColor = "rgba(46, 47, 66, 0.80)";
+});
 
 
